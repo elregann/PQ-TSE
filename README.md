@@ -1,6 +1,6 @@
 # Post-Quantum Topological Symmetric Encryption (PQ-TSE)
 
-##Overview
+## Overview
 PQ-TSE introduces a novel post-quantum symmetric encryption technique based on a new hard problem rooted in combinatorial topology, termed the Secret Pachner Path Problem (SP3). The SP3 problem exploits the fundamental property that a simplicial complex can be transformed through a sequence of local topological operations called Pachner moves (also known as bistellar flips) without altering its global topological invariants (e.g., homology groups, Betti numbers).
 The proposed PQ-TSE scheme secures digital communications by encoding a secret message as a 1-cycle (a closed path of edges) within a triangulated 2-manifold (specifically, a Torus). Both communicating parties share a secret sequence of Pachner moves. The sender applies this secret sequence to "scramble" the message cycle within the triangulation, producing the ciphertext. The receiver, possessing the same secret sequence, can deterministically reverse the scrambling to recover the original message.
 This approach hides information not in algebraic structures vulnerable to quantum algorithms (such as lattices, codes, or multivariate polynomials), but in the combinatorial geometry of high-dimensional triangulations. The security relies on the computational hardness of finding the secret Pachner path among an exponentially large search space, a problem for which no efficient classical or quantum algorithm is currently known.
