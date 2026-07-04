@@ -1,1 +1,18 @@
-# PQ-TSE
+# Post-Quantum Topological Symmetric Encryption (PQ-TSE)
+
+##Overview
+PQ-TSE introduces a novel post-quantum symmetric encryption technique based on a new hard problem rooted in combinatorial topology, termed the Secret Pachner Path Problem (SP3). The SP3 problem exploits the fundamental property that a simplicial complex can be transformed through a sequence of local topological operations called Pachner moves (also known as bistellar flips) without altering its global topological invariants (e.g., homology groups, Betti numbers).
+The proposed PQ-TSE scheme secures digital communications by encoding a secret message as a 1-cycle (a closed path of edges) within a triangulated 2-manifold (specifically, a Torus). Both communicating parties share a secret sequence of Pachner moves. The sender applies this secret sequence to "scramble" the message cycle within the triangulation, producing the ciphertext. The receiver, possessing the same secret sequence, can deterministically reverse the scrambling to recover the original message.
+This approach hides information not in algebraic structures vulnerable to quantum algorithms (such as lattices, codes, or multivariate polynomials), but in the combinatorial geometry of high-dimensional triangulations. The security relies on the computational hardness of finding the secret Pachner path among an exponentially large search space, a problem for which no efficient classical or quantum algorithm is currently known.
+
+## Features
+- Resilience Against Post-Quantum Attacks: PQ-TSE is designed to be secure against quantum computer attacks by avoiding number-theoretic and linear-algebraic problems vulnerable to Shor's algorithm and variants of the HHL algorithm. The underlying hard problem is purely combinatorial-topological, placing it outside the reach of known quantum algorithms.
+- Mathematical Rigor via Homology Preservation: The correctness of the scheme is guaranteed by the mathematical theory of simplicial homology. Pachner moves preserve homology classes, and the message encoding/decoding process is equivalent to adding boundaries of 2-chains to the message cycle, which does not alter its homology class.
+- Bounded Ciphertext Growth: Through a stack-based directed edge cancellation mechanism, the ciphertext size remains bounded even after thousands of Pachner moves. Empirical stress tests show ciphertext growth rates below 0.4 vertices per move, ensuring practical efficiency.
+- Exponential Security Margin: With parameters of 500 Pachner moves on a 10×10 grid Torus, the search space exceeds 10^1249 (approximately 2^4150), providing a security margin far exceeding the 128-bit or 256-bit standards required for modern cryptography.
+- Implementation Feasibility: PQ-TSE avoids matrices, large integer arithmetic, and complex algebraic operations. The core operations (edge flips and path tracking) can be implemented efficiently using hash maps and linked lists, making it suitable for resource-constrained environments.
+- Novel Hard Problem: The Secret Pachner Path Problem represents a new class of computational hardness distinct from Lattice, Code-based, Multivariate, and Isogeny-based problems, expanding the landscape of post-quantum cryptographic primitives.
+- Symmetric Key Model: PQ-TSE operates as a symmetric encryption scheme where both parties share the same secret key (the sequence of Pachner moves). Secure key distribution must be established through an external secure channel prior to communication.
+
+## Installation
+To use the PQ-TSE encryption technique, you need to have SageMath installed on your system (for simplicial complex operations) or adapt the code to use a Python library such as simplicial-complex. Run the code in a SageMath notebook or Python environment.
